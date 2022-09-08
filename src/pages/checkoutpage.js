@@ -1,5 +1,5 @@
 import React from "react";
-import {Divider} from 'antd'
+import { Divider } from "antd";
 // import CardLayout from "../Card/card";
 // import { Row, Col,  Button } from "antd";
 // import ProductData from "../products";

@@ -4,9 +4,8 @@ import "antd/dist/antd.min.css";
 
 import { Routes, Route, Navigate } from "react-router-dom";
 import AppLayout from "./components/hoc/AppLayout";
-import HomePage from "./components/pages/homepage";
-import CheckoutPage from "./components/pages/checkoutpage";
-
+import HomePage from "./pages/homepage";
+import CheckoutPage from "./pages/checkoutpage";
 
 function App() {
   return (

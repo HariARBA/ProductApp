@@ -2,14 +2,12 @@ import styled from "styled-components";
 
 export const LogoBox = styled.button`
   /* Adapt the colors based on primary prop */
-  background: ${(props) => (props.primary ? "#1890ff" : "white")};
-  color: ${(props) => (props.primary ? "white" : "#1890ff")};
+
   width: 10em;
   height: 3em;
   font-weight: bold;
   font-size: 1em;
-  margin: 1em;
-  padding: 0.25em 1em;
+
   border: 0px solid #1890ff;
   border-radius: 3px;
 `;
@@ -28,6 +26,6 @@ export const ProductBox = styled.button`
   border: 0px solid #1890ff;
   border-radius: 3px;
 `;
-export const Padding= styled.div`
-padding: 1em;
+export const Padding = styled.div`
+  padding: 1em;
 `;
