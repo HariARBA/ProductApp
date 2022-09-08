@@ -1,10 +1,10 @@
 import { Button, Card } from "antd";
 import React from "react";
 import { useState } from "react";
+import { Tooltip, Typography } from "antd";
 import "../globalvariables";
 
-const { Meta } = Card;
-
+const { Paragraph } = Typography;
 function CardLayout({ carddata }) {
   const [count, setCount] = useState(0);
 
@@ -15,7 +15,41 @@ function CardLayout({ carddata }) {
   console.log(global.count);
   return (
     <div>
-      <Card
+      <Card hoverable>
+        <img
+          style={{
+            width: "100%",
+            height: "300px",
+            objectFit: "fit",
+            zIndex: "-10",
+          }}
+          alt="example"
+          src={carddata.image}
+        />
+      </Card>
+      <Card >
+        <div 
+          title={carddata.title}
+          style={{
+            display: "flex",
+            borderRadius: "4px",
+
+            marginTop: "-50px",
+            backgroundColor: "white",
+          }}
+        >
+          <Tooltip title={carddata.description}>
+            <Paragraph ellipsis={{ rows: 5 }}>
+              <p style={{fontWeight:"bold",fontSize:16}}>{carddata.title}</p>
+              {carddata.description}
+            </Paragraph>
+          </Tooltip>
+        </div>
+        <Button type="primary" onClick={increase}>
+          Add to Cart
+        </Button>
+      </Card>
+      {/* <Card
         hoverable
         size="small"
         cover={
@@ -33,7 +67,7 @@ function CardLayout({ carddata }) {
         <Button type="primary" block onClick={increase} style={{}}>
           Add To Cart
         </Button>
-      </Card>
+      </Card> */}
     </div>
   );
 }
