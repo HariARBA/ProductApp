@@ -1,24 +1,42 @@
-import React from "react";
-import { Divider } from "antd";
-// import CardLayout from "../Card/card";
-// import { Row, Col,  Button } from "antd";
-// import ProductData from "../products";
+import React, { useState, useEffect } from "react";
 
-function CheckoutPage() {
+import { Row,Col,Card,Button, Divider} from "antd";
+import CartCardLayout from "../components/card/cartcard";
+// import ProductData from "../components/products";
+
+function CheckoutPage({ cart, setCart, handleChange }) {
+  const [price, setPrice] = useState(0);
+
+  const handleRemove = (id) => {
+    const arr = cart.filter((product) => product.id !== id);
+    setCart(arr);
+    handlePrice();
+  };
+  const handlePrice = () => {
+    let ans = 0;
+    cart.map((product) => (ans += product.amount * product.price));
+    setPrice(ans);
+  };
+
+  useEffect(() => {
+    handlePrice();
+  });
+
   return (
     <div className="main">
       <h2>My Cart</h2>
       <Divider />
-      <h2>Checkout page</h2>
-      {/* <Row gutter={[16, 16]}>
-        {ProductData.map((it, index) => {
+      <Row gutter={[16, 16]} style={{ padding: "10px" }}>
+        {cart.map((product, index) => {
           return (
-            <Col span={6} key={index}>
-              <CardLayout carddata={it} />
+            <Col span={6} xs={{ span: 24 }} sm={{ span: 12 }} lg={{ span: 6 }}>
+              <CartCardLayout carddata={product} handleChange={handleChange}/>
             </Col>
           );
         })}
-      </Row> */}
+      </Row>
+      
+
       <Divider />
     </div>
   );

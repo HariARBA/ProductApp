@@ -3,11 +3,12 @@ import { Row, Col, Button, Divider } from "antd";
 import ProductData from "../components/products";
 import { useNavigate } from "react-router-dom";
 
-import CardLayout from "../components/card/card";
+import CardLayout from "../components/card/prodcard";
 
 global.count = 0;
-function HomePage() {
+function HomePage({handleClick}) {
   let navigate = useNavigate();
+
 
   return (
     <div>
@@ -18,7 +19,7 @@ function HomePage() {
         {ProductData.map((product, index) => {
           return (
             <Col span={6} xs={{ span: 24 }} sm={{ span: 12 }} lg={{ span: 6 }}>
-              <CardLayout carddata={product} />
+              <CardLayout carddata={product} handleClick={handleClick} />
             </Col>
           );
         })}

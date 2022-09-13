@@ -1,18 +1,11 @@
 import { Button, Card } from "antd";
 import React from "react";
-import { useState } from "react";
+
 import { Tooltip, Typography } from "antd";
 import "../globalvariables";
 
 const { Paragraph } = Typography;
-function CardLayout({ carddata }) {
-  const [count, setCount] = useState(0);
-
-  const increase = () => {
-    setCount((global.count = count + 1));
-  };
-
-  console.log(global.count);
+function CartCardLayout({ carddata, handleChange }) {
   return (
     <div>
       <Card hoverable>
@@ -27,8 +20,8 @@ function CardLayout({ carddata }) {
           src={carddata.image}
         />
       </Card>
-      <Card >
-        <div 
+      <Card>
+        <div
           title={carddata.title}
           style={{
             display: "flex",
@@ -40,14 +33,16 @@ function CardLayout({ carddata }) {
         >
           <Tooltip title={carddata.description}>
             <Paragraph ellipsis={{ rows: 5 }}>
-              <p style={{fontWeight:"bold",fontSize:16}}>{carddata.title}</p>
+              <p style={{ fontWeight: "bold", fontSize: 16 }}>
+                {carddata.title}
+              </p>
               {carddata.description}
             </Paragraph>
           </Tooltip>
         </div>
-        <Button type="primary" onClick={increase}>
-          Add to Cart
-        </Button>
+        <Button onClick={() => handleChange(carddata, 1)}>+</Button>
+        <Button>{carddata.amount}</Button>
+        <Button onClick={() => handleChange(carddata, -1)}>-</Button>
       </Card>
       {/* <Card
         hoverable
@@ -71,4 +66,4 @@ function CardLayout({ carddata }) {
     </div>
   );
 }
-export default CardLayout;
+export default CartCardLayout;
