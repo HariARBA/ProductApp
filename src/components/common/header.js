@@ -1,5 +1,5 @@
 import React from "react";
-import { Menu, Badge} from "antd";
+import { Menu, Badge } from "antd";
 import Avatar from "antd/lib/avatar/avatar";
 import { ShoppingCartOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
@@ -12,10 +12,10 @@ function AppHeader() {
 
   return (
     <HeaderStyle>
-      <LogoBox>Logo</LogoBox>
-      
-      <Menu mode="horizontal" >
-        <Menu.Item >
+      <LogoBox onClick={() => navigate("/homepage")}>Logo</LogoBox>
+
+      <Menu mode="horizontal">
+        <Menu.Item>
           <Badge count={countitem} onClick={() => navigate("/checkout")}>
             <ShoppingCartOutlined />
           </Badge>

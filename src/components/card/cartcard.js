@@ -5,7 +5,7 @@ import { Tooltip, Typography } from "antd";
 import "../globalvariables";
 
 const { Paragraph } = Typography;
-function CartCardLayout({ carddata, handleChange }) {
+function CartCardLayout({ carddata, handleChange, handleRemove }) {
   return (
     <div>
       <Card hoverable>
@@ -40,29 +40,17 @@ function CartCardLayout({ carddata, handleChange }) {
             </Paragraph>
           </Tooltip>
         </div>
-        <Button onClick={() => handleChange(carddata, 1)}>+</Button>
-        <Button>{carddata.amount}</Button>
-        <Button onClick={() => handleChange(carddata, -1)}>-</Button>
-      </Card>
-      {/* <Card
-        hoverable
-        size="small"
-        cover={
-          
-            <img alt="example" style={{ height: "90%" }} src={carddata.image} />
-          
-        }
-      ></Card>
-      <Card hoverable>
-        <Meta title={carddata.title} />
-        <div style={{ overflow: "hidden"}}>
-          <p>{carddata.description}</p>
-        </div>
-        <h3>${carddata.price}</h3>
-        <Button type="primary" block onClick={increase} style={{}}>
-          Add To Cart
+        <Button type="primary" block onClick={() => handleChange(carddata, 1)}>
+          +
         </Button>
-      </Card> */}
+        <Button type="primary"block>{carddata.amount}</Button>
+        <Button type="primary"block onClick={() => handleChange(carddata, -1)}>
+          -
+        </Button>
+        <Button type="primary" block onClick={() => handleRemove(carddata.id)}>
+          Remove from Cart
+        </Button>
+      </Card>
     </div>
   );
 }

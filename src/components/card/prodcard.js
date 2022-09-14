@@ -12,7 +12,7 @@ function CardLayout({ carddata, handleClick }) {
       <Card hoverable>
         <img
           style={{
-            width: "100%",
+            width: "240px",
             height: "300px",
             objectFit: "fit",
             zIndex: "-10",
@@ -34,36 +34,18 @@ function CardLayout({ carddata, handleClick }) {
         >
           <Tooltip title={carddata.description}>
             <Paragraph ellipsis={{ rows: 5 }}>
-              <p style={{ fontWeight: "bold", fontSize: 16 }}>
+              <p style={{ fontWeight: "bold", fontSize: 14 }}>
                 {carddata.title}
               </p>
               {carddata.description}
             </Paragraph>
           </Tooltip>
         </div>
-        <Button type="primary" onClick={() => handleClick(carddata)}>
+        <Button type="primary" block onClick={() => handleClick(carddata)}>
           Add to Cart
         </Button>
       </Card>
-      {/* <Card
-        hoverable
-        size="small"
-        cover={
-          
-            <img alt="example" style={{ height: "90%" }} src={carddata.image} />
-          
-        }
-      ></Card>
-      <Card hoverable>
-        <Meta title={carddata.title} />
-        <div style={{ overflow: "hidden"}}>
-          <p>{carddata.description}</p>
-        </div>
-        <h3>${carddata.price}</h3>
-        <Button type="primary" block onClick={increase} style={{}}>
-          Add To Cart
-        </Button>
-      </Card> */}
+
     </div>
   );
 }

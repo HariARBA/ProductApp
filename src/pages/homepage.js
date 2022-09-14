@@ -20,13 +20,14 @@ function HomePage({handleClick}) {
           return (
             <Col span={6} xs={{ span: 24 }} sm={{ span: 12 }} lg={{ span: 6 }}>
               <CardLayout carddata={product} handleClick={handleClick} />
+              
             </Col>
           );
         })}
       </Row>
 
       <Divider />
-      <Button type="primary" size="large" onClick={() => navigate("/checkout")}>
+      <Button type="primary" block size="large" onClick={() => navigate("/checkout")}>
         Checkout
       </Button>
       <Divider />

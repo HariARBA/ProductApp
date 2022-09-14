@@ -13,7 +13,6 @@ function App() {
     
     // if(cart.indexOf(product!==0) )return;
     setCart([...cart, product]);
-    // cart.push(product);
     console.log(cart);
 
   };

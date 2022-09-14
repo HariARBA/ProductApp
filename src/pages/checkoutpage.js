@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 
-import { Row,Col,Card,Button, Divider} from "antd";
+import { Row,Col, Divider} from "antd";
 import CartCardLayout from "../components/card/cartcard";
-// import ProductData from "../components/products";
 
 function CheckoutPage({ cart, setCart, handleChange }) {
   const [price, setPrice] = useState(0);
@@ -30,12 +29,15 @@ function CheckoutPage({ cart, setCart, handleChange }) {
         {cart.map((product, index) => {
           return (
             <Col span={6} xs={{ span: 24 }} sm={{ span: 12 }} lg={{ span: 6 }}>
-              <CartCardLayout carddata={product} handleChange={handleChange}/>
+              <CartCardLayout carddata={product} handleChange={handleChange} handleRemove={handleRemove}/>
             </Col>
           );
         })}
       </Row>
-      
+      <div>
+        Total : $
+        {price}
+      </div>
 
       <Divider />
     </div>
