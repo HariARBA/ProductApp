@@ -14,6 +14,7 @@ import {
 
 function App() {
   const products = useSelector((state) => state.product);
+  console.log(products)
   const getProduct = async () => {
     dispatch(productLoading());
     try {
