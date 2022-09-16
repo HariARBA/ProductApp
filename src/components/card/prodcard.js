@@ -2,7 +2,7 @@ import { Button, Card } from "antd";
 import React from "react";
 
 import { Tooltip, Typography } from "antd";
-import "../globalvariables";
+
 
 const { Paragraph } = Typography;
 function CardLayout({ carddata, handleClick }) {
@@ -41,11 +41,10 @@ function CardLayout({ carddata, handleClick }) {
             </Paragraph>
           </Tooltip>
         </div>
-        <Button type="primary" block onClick={() => handleClick(carddata)}>
+        <Button type="primary" block onClick={() => {}}>
           Add to Cart
         </Button>
       </Card>
-
     </div>
   );
 }

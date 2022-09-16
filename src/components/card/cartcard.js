@@ -1,8 +1,8 @@
-import { Button, Card } from "antd";
+import { Button, Card, Space } from "antd";
 import React from "react";
 
 import { Tooltip, Typography } from "antd";
-import "../globalvariables";
+
 
 const { Paragraph } = Typography;
 function CartCardLayout({ carddata, handleChange, handleRemove }) {
@@ -40,16 +40,26 @@ function CartCardLayout({ carddata, handleChange, handleRemove }) {
             </Paragraph>
           </Tooltip>
         </div>
-        <Button type="primary" block onClick={() => handleChange(carddata, 1)}>
+        <Space direction="vertical" size="middle" style={{ display: "flex" }}>
+        <Button type="primary" block onClick={() =>{}}>
           +
         </Button>
-        <Button type="primary"block>{carddata.amount}</Button>
-        <Button type="primary"block onClick={() => handleChange(carddata, -1)}>
+        <Button type="primary" block>
+          {carddata.amount}
+        </Button>
+
+        <Button type="primary" block onClick={() => {}}>
           -
         </Button>
-        <Button type="primary" block onClick={() => handleRemove(carddata.id)}>
-          Remove from Cart
-        </Button>
+        
+          <Button
+            type="primary"
+            block
+            onClick={() => handleRemove(carddata.id)}
+          >
+            Remove from Cart
+          </Button>
+        </Space>
       </Card>
     </div>
   );
