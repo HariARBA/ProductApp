@@ -14,12 +14,12 @@ import {
 
 function App() {
   const dispatch = useDispatch();
+  const productdata = useSelector((state) => state.product);
 
   const getProduct = async () => {
     dispatch(productLoading());
     try {
       const product = await axios({ url: "https://fakestoreapi.com/products" });
-      console.log("product:", product.data);
       dispatch(productSuccess(product.data));
     } catch (error) {
       console.log(error);
@@ -31,11 +31,17 @@ function App() {
     getProduct();
   }, []);
 
-  return (
-    <AppLayout>
-      <AppRoute />
-    </AppLayout>
-  );
+  if (productdata.error) {
+    return <>error</>;
+  } else if (productdata.loading) {
+    return <>Loading</>;
+  } else {
+    return (
+      <AppLayout>
+        <AppRoute />
+      </AppLayout>
+    );
+  }
 }
 
 export default App;

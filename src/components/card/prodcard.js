@@ -2,11 +2,9 @@ import { Button, Card } from "antd";
 import React from "react";
 
 import { Tooltip, Typography } from "antd";
-
-
 const { Paragraph } = Typography;
-function CardLayout({ carddata, handleClick }) {
 
+function CardLayout({ data }) {
   return (
     <div>
       <Card hoverable>
@@ -18,12 +16,12 @@ function CardLayout({ carddata, handleClick }) {
             zIndex: "-10",
           }}
           alt="example"
-          src={carddata.image}
+          src={data.image}
         />
       </Card>
       <Card>
         <div
-          title={carddata.title}
+          title={data.title}
           style={{
             display: "flex",
             borderRadius: "4px",
@@ -32,12 +30,10 @@ function CardLayout({ carddata, handleClick }) {
             backgroundColor: "white",
           }}
         >
-          <Tooltip title={carddata.description}>
+          <Tooltip title={data.description}>
             <Paragraph ellipsis={{ rows: 5 }}>
-              <p style={{ fontWeight: "bold", fontSize: 14 }}>
-                {carddata.title}
-              </p>
-              {carddata.description}
+              <p style={{ fontWeight: "bold", fontSize: 14 }}>{data.title}</p>
+              {data.description}
             </Paragraph>
           </Tooltip>
         </div>
