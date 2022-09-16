@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  loading: false,
+  loading: true,
   error: null,
-  data: {},
+  data: [],
 };
 
 export const productSlice = createSlice({
