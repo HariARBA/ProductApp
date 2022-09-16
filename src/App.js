@@ -13,19 +13,20 @@ import {
 } from "./store/features/product/productSlice";
 
 function App() {
-  const products = useSelector((state) => state.product);
+  const dispatch = useDispatch();
+
   const getProduct = async () => {
     dispatch(productLoading());
     try {
       const product = await axios({ url: "https://fakestoreapi.com/products" });
-      console.log("product:", product);
-      dispatch(productSuccess( product.data));
+      console.log("product:", product.data);
+      dispatch(productSuccess(product.data));
     } catch (error) {
       console.log(error);
-      dispatch(productError( error.message));
+      dispatch(productError(error.message));
     }
   };
-  const dispatch = useDispatch();
+
   React.useEffect(() => {
     getProduct();
   }, []);

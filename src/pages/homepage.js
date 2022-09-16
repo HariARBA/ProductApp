@@ -8,8 +8,9 @@ import { useSelector } from "react-redux";
 
 function HomePage({ handleClick }) {
   let navigate = useNavigate();
-  const productdata = useSelector((state) =>state.product);
-  // console.log("productdata", productdata);
+  const productdata = useSelector((state) => state.product);
+  console.log("productdata", productdata);
+
   return (
     <div>
       <Divider />
