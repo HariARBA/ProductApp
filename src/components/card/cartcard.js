@@ -1,11 +1,19 @@
-import { Button, Card, Space } from "antd";
+import { Button, Card, Row, Col } from "antd";
 import React from "react";
 
 import { Tooltip, Typography } from "antd";
+import { useDispatch } from "react-redux";
+import {
+  decreaseQuantity,
+  removeFromCart,
+  increaseQuantity
+} from "../../store/features/product/cartSlice";
 
+const { Paragraph, Text } = Typography;
 
-const { Paragraph } = Typography;
-function CartCardLayout({ carddata, handleChange, handleRemove }) {
+function CartCardLayout({ data }) {
+  const dispatch = useDispatch();
+
   return (
     <div>
       <Card hoverable>
@@ -17,12 +25,12 @@ function CartCardLayout({ carddata, handleChange, handleRemove }) {
             zIndex: "-10",
           }}
           alt="example"
-          src={carddata.image}
+          src={data.image}
         />
       </Card>
       <Card>
         <div
-          title={carddata.title}
+          title={data.title}
           style={{
             display: "flex",
             borderRadius: "4px",
@@ -31,35 +39,41 @@ function CartCardLayout({ carddata, handleChange, handleRemove }) {
             backgroundColor: "white",
           }}
         >
-          <Tooltip title={carddata.description}>
+          <Tooltip title={data.description}>
             <Paragraph ellipsis={{ rows: 5 }}>
-              <p style={{ fontWeight: "bold", fontSize: 16 }}>
-                {carddata.title}
-              </p>
-              {carddata.description}
+              <p style={{ fontWeight: "bold", fontSize: 16 }}>{data.title}</p>
+              {data.description}
             </Paragraph>
           </Tooltip>
         </div>
-        <Space direction="vertical" size="middle" style={{ display: "flex" }}>
-        <Button type="primary" block onClick={() =>{}}>
-          +
-        </Button>
-        <Button type="primary" block>
-          {carddata.amount}
-        </Button>
+        <div style={{ fontWeight: "bold", fontSize: "1.5em" }}>
+          Price: $ {data.price}
+        </div>
+        <Row gutter={[16, 16]}>
+          <Col span={8}>
+            <Button block onClick={() => dispatch(increaseQuantity(data))}>
+              +
+            </Button>
+          </Col>
+          <Col span={8}>
+            <Text strong style={{ display: "flex", justifyContent: "center" }}>
+              {data.cartQuantity}
+            </Text>
+          </Col>
+          <Col span={8}>
+            <Button block onClick={() => dispatch(decreaseQuantity(data))}>
+              -
+            </Button>
+          </Col>
+        </Row>
 
-        <Button type="primary" block onClick={() => {}}>
-          -
+        <Button
+          type="primary"
+          block
+          onClick={() => dispatch(removeFromCart(data))}
+        >
+          Remove from Cart
         </Button>
-        
-          <Button
-            type="primary"
-            block
-            onClick={() => handleRemove(carddata.id)}
-          >
-            Remove from Cart
-          </Button>
-        </Space>
       </Card>
     </div>
   );

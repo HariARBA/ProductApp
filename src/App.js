@@ -1,6 +1,8 @@
 import React from "react";
 import "./App.css";
 import "antd/dist/antd.min.css";
+import "react-toastify/dist/ReactToastify.css"
+
 
 import AppLayout from "./components/hoc/AppLayout";
 import AppRoute from "./routes/approute";
@@ -12,10 +14,10 @@ import {
   productSuccess,
 } from "./store/features/product/productSlice";
 
+
 function App() {
   const dispatch = useDispatch();
   const productdata = useSelector((state) => state.product);
-  console.log(products)
 
   const getProduct = async () => {
     dispatch(productLoading());
@@ -39,7 +41,9 @@ function App() {
   } else {
     return (
       <AppLayout>
+
         <AppRoute />
+
       </AppLayout>
     );
   }

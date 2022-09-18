@@ -5,18 +5,19 @@ import { ShoppingCartOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 
 import { HeaderStyle, LogoBox } from "../styledcomps/styledcomps";
+import { useSelector } from "react-redux";
 
-var countitem = global.count;
+
 function AppHeader() {
   let navigate = useNavigate();
-
+const {cartTotalQuantity}=useSelector((state)=>state.cart)
   return (
     <HeaderStyle >
       <LogoBox onClick={() => navigate("/homepage")}>Logo</LogoBox>
 
       <Menu mode="horizontal">
         <Menu.Item>
-          <Badge  count={countitem} onClick={() => navigate("/checkout")}>
+          <Badge  count={cartTotalQuantity} onClick={() => navigate("/checkout")}>
             <ShoppingCartOutlined style={{fontSize:"200%"}}/>
           </Badge>
         </Menu.Item>

@@ -2,9 +2,13 @@ import { Button, Card } from "antd";
 import React from "react";
 
 import { Tooltip, Typography } from "antd";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../store/features/product/cartSlice";
 const { Paragraph } = Typography;
 
 function CardLayout({ data }) {
+  const dispatch = useDispatch();
+
   return (
     <div>
       <Card hoverable>
@@ -37,7 +41,14 @@ function CardLayout({ data }) {
             </Paragraph>
           </Tooltip>
         </div>
-        <Button type="primary" block onClick={() => {}}>
+
+        <Button
+          type="primary"
+          block
+          onClick={() => {
+            dispatch(addToCart(data));
+          }}
+        >
           Add to Cart
         </Button>
       </Card>
