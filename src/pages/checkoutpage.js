@@ -9,7 +9,7 @@ function CheckoutPage() {
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
 
-  React.useEffect(() => {dispatch(getTotal());}, [cart]);
+  React.useEffect(() => {dispatch(getTotal());}, [cart,dispatch]);
   return (
     <div className="main">
       <Divider />

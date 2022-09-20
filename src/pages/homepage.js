@@ -3,13 +3,17 @@ import { Row, Col, Button, Divider } from "antd";
 import { useNavigate } from "react-router-dom";
 
 import CardLayout from "../components/card/prodcard";
-import { useSelector} from "react-redux";
-
+import { useSelector, useDispatch } from "react-redux";
+import { getTotal } from "../store/features/product/cartSlice";
 
 function HomePage() {
   let navigate = useNavigate();
+  const dispatch = useDispatch();
+  const cart = useSelector((state) => state.cart);
   const productdata = useSelector((state) => state.product);
-
+  React.useEffect(() => {
+    dispatch(getTotal());
+  }, [cart, dispatch]);
   return (
     <div>
       <Divider />

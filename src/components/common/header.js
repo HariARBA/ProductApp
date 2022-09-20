@@ -7,18 +7,21 @@ import { useNavigate } from "react-router-dom";
 import { HeaderStyle, LogoBox } from "../styledcomps/styledcomps";
 import { useSelector } from "react-redux";
 
-
 function AppHeader() {
   let navigate = useNavigate();
-const {cartTotalQuantity}=useSelector((state)=>state.cart)
+  const { cartTotalQuantity } = useSelector((state) => state.cart);
+  console.log(cartTotalQuantity);
   return (
-    <HeaderStyle >
+    <HeaderStyle>
       <LogoBox onClick={() => navigate("/homepage")}>Logo</LogoBox>
 
       <Menu mode="horizontal">
         <Menu.Item>
-          <Badge  count={cartTotalQuantity} onClick={() => navigate("/checkout")}>
-            <ShoppingCartOutlined style={{fontSize:"200%"}}/>
+          <Badge
+            count={cartTotalQuantity}
+            onClick={() => navigate("/checkout")}
+          >
+            <ShoppingCartOutlined style={{ fontSize: "200%" }} />
           </Badge>
         </Menu.Item>
 
