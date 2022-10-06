@@ -3,13 +3,12 @@ import styled from "styled-components";
 export const LogoBox = styled.div`
   /* Adapt the colors based on primary prop */
 
- background: #1890ff;
- padding: 0.25em 1em;
- font-size: 2em;
- font-weight: bold;
- border-radius: 3px;
- color: white;
-
+  background: #1890ff;
+  padding: 0.25em 1em;
+  font-size: 2em;
+  font-weight: bold;
+  border-radius: 3px;
+  color: white;
 `;
 export const ProductBox = styled.button`
   /* Adapt the colors based on primary prop */
@@ -17,7 +16,7 @@ export const ProductBox = styled.button`
   color: #1890ff;
   width: 100vh;
   display: flex;
-  flex-direction:column;
+  flex-direction: column;
   height: 3em;
   font-weight: bold;
   font-size: 1.2em;
@@ -30,7 +29,24 @@ export const Padding = styled.div`
   padding: 1em;
 `;
 export const HeaderStyle = styled.div`
-display: flex; 
-justify-content: space-between;
-
+  display: flex;
+  justify-content: space-between;
+`;
+export const LoginDesign = styled.div`
+  padding: 2em;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: space-between;
+`;
+export const LogOut = styled.div`
+color: white;
+cursor: pointer;
+`;
+export const AuthLink = styled.div`
+ a {
+    &:last-child {
+      margin-left: 2rem;
+    }
+  }
 `;

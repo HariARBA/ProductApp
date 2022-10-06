@@ -11,6 +11,8 @@ function HomePage() {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
   const productdata = useSelector((state) => state.product);
+  const auth = useSelector((state) => state.auth);
+  console.log(auth);
   React.useEffect(() => {
     dispatch(getTotal());
   }, [cart, dispatch]);

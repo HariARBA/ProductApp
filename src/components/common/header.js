@@ -2,20 +2,33 @@ import React from "react";
 import { Menu, Badge } from "antd";
 import Avatar from "antd/lib/avatar/avatar";
 import { ShoppingCartOutlined } from "@ant-design/icons";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-import { HeaderStyle, LogoBox } from "../styledcomps/styledcomps";
+import {
+  AuthLink,
+  HeaderStyle,
+  LogoBox,
+  LogOut,
+} from "../styledcomps/styledcomps";
 import { useSelector } from "react-redux";
 
 function AppHeader() {
   let navigate = useNavigate();
   const { cartTotalQuantity } = useSelector((state) => state.cart);
+  const auth = useSelector((state) => state.auth);
   console.log(cartTotalQuantity);
   return (
     <HeaderStyle>
       <LogoBox onClick={() => navigate("/homepage")}>Logo</LogoBox>
 
       <Menu mode="horizontal">
+      {auth._id ? (
+        <LogOut>LogOut</LogOut>
+      ) : (
+        <AuthLink>
+          <Link to="/loginpage">Login</Link>
+        </AuthLink>
+      )} 
         <Menu.Item>
           <Badge
             count={cartTotalQuantity}
@@ -29,6 +42,7 @@ function AppHeader() {
           <Avatar />
         </Menu.Item>
       </Menu>
+      
     </HeaderStyle>
   );
 }

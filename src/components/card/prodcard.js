@@ -12,10 +12,10 @@ function CardLayout({ data }) {
   return (
     <div>
       <Card hoverable>
-        <img
+        <img objectFit="cover"
           style={{
-            width: "240px",
-            height: "300px",
+            width: "100%",
+            height: "350px",
             objectFit: "fit",
             zIndex: "-10",
           }}
